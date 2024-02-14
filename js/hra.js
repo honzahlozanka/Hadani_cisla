@@ -1,4 +1,4 @@
-class Cisla {
+class Hra {
     constructor() {
         this.num = Math.floor(Math.random() * 40) + 1;              
           
@@ -9,15 +9,18 @@ class Cisla {
     _vypis() {
              
         const start_text = document.getElementById("welcome_text");
-        start_text.textContent = 'Hru hrají dva hráči- "skrývající" a "hádající". Skrývající hráč si myslí přirozené číslo z dohodnutého intervalu a hádající hráč se snaži číslo uhádnout. Hádající hráč vždy tipne číslo a dostane od skrývajícího hráče informaci, zda je tajné číslo větší nebo menší.';  
+        start_text.textContent = 'Hru hrají dva hráči- "skrývající" a "hádající". Skrývající hráč (počítač) si myslí přirozené číslo z dohodnutého intervalu (1-40 defaultně) a hádající hráč se snaži číslo uhádnout. Hádající hráč vždy tipne číslo a dostane od skrývajícího hráče informaci, zda je tajné číslo větší nebo menší.';  
       
     }
     _zacitHru() {
         const zacni = document.getElementById("zacni");
-
+        const history = document.getElementById("history");
+        
+              
         zacni.addEventListener("click", () => {           
             const hra_vypis = document.getElementById("game");
             hra_vypis.textContent = "Myslím si číslo od 1 do 40, jaké tipuješ?";
+           
             zacni.disabled = true;
             zacni.textContent = "Ve hře";
 
@@ -44,26 +47,38 @@ class Cisla {
             // Přidání formuláře do existujícího elementu na stránce       
             hra_vypis.appendChild(formElement);
 
+ 
             buttonElement.addEventListener("click", () => { 
                zacni.textContent = "Pokračuj";
-               zacni.disabled = false;
-
+               zacni.disabled = false; 
+                            
                const hadaneCislo = inputElement.value;
-               if (this.num > hadaneCislo) {
-                hra_vypis.textContent = "Moje číslo je větší";
+                             
+                if (this.num > hadaneCislo) {
+                    hra_vypis.textContent = `${hadaneCislo}, Moje číslo je větší`;
+                                                                                                
                 }
                 if (this.num < hadaneCislo) {
-                    hra_vypis.textContent = "Moje číslo je menší";
-                    }
-               if (hadaneCislo > 40 || hadaneCislo < 1) {
-                hra_vypis.textContent = "Hádal jsi mimo rozsah";
-                 } 
+                    hra_vypis.textContent = `${hadaneCislo}, Moje číslo je menší`;                   
+                                                                               
+                   }
+                if (hadaneCislo > 40 || hadaneCislo < 1) {
+                    hra_vypis.textContent = `${hadaneCislo}, Hádal jsi mimo rozsah`;
+                                                                                           
+                    } 
                 if (this.num == hadaneCislo ) {
-                    hra_vypis.textContent = "Ano, správně";
-                }                            
-    
+                    hra_vypis.textContent = `Ano, ${this.num}, je správně, konec hry`;
+                    zacni.disabled = true;
+                    zacni.textContent = "Konec";
+                                   
+                } 
+
+                history.innerHTML += hra_vypis.textContent + "<br>";  
+                                                 
             });
-     
+
+
+           
 
         });
     }

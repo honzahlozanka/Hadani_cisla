@@ -1,2 +1,2 @@
-const cisla = new Cisla();
+const hra = new Hra();
 
