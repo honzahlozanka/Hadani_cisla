@@ -1,0 +1,45 @@
+main {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 80em;
+    
+}
+
+
+p {
+     align-items: center;
+     max-width: 450px;
+}
+
+.wrapper {
+    border: solid 2px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: bisque;
+
+}
+
+
+#zacni {
+    border-radius: 15px;
+    padding: 30px;
+    background-color: rgb(172, 150, 207);
+
+}
+
+
+#hadej {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgb(172, 150, 207);
+
+}
+
+#hadaneCislo {
+    margin-right: 50px;
+    width: 50px;
+}
