@@ -1,1 +1,1 @@
-Jednoduchá hra na hádání čísel.
+Hra na hádání čísel.
